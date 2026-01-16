@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bittu Kumar | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-alt: #020b1f;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --accent-strong: #60a5fa;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --card: #020617;
+      --border: #1e293b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0f172a, #020617 55%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      padding: 5rem 0;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      color: var(--accent-strong);
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+      display: inline-block;
+    }
+
+    .title {
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+    }
+
+    /* ===== Navbar ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(2, 6, 23, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      font-size: 1rem;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.4rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* ===== Hero ===== */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-intro h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-intro h1 span {
+      color: var(--accent);
+    }
+
+    .hero-role {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      padding: 0.75rem 1.7rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #22d3ee);
+      color: #020617;
+      box-shadow: 0 15px 35px rgba(56, 189, 248, 0.45);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .btn-outline:hover {
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-photo img {
+      width: 260px;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 20px;
+      padding: 6px;
+      background: linear-gradient(135deg, var(--accent), #22d3ee, #a78bfa);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+    }
+
+    /* ===== About ===== */
+    .about-grid,
+    .skills-grid,
+    .proj-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* ===== Contact ===== */
+    form {
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.6rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      background: #020617;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.8rem;
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+      nav ul {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav-inner">
+    <div class="brand">BITTU <span>KUMAR</span></div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section id="home">
+  <div class="container hero-grid">
+    <div class="hero-intro">
+      <span class="tag">Web Development & C Programming</span>
+      <h1>Hello, I'm <span>Bittu Kumar</span></h1>
+      <p class="hero-role">
+        Computer Science student focused on frontend development and strong programming fundamentals.
+      </p>
+      <p>
+        I enjoy building clean user interfaces, learning core CS concepts,
+        and improving problem-solving skills through C programming and JavaScript.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">My Projects</a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+    </div>
+
+    <div class="hero-photo">
+      <!-- Replace with your image -->
+      <img src="your-photo.jpg" alt="Bittu Kumar">
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <span class="tag">About Me</span>
+    <h2 class="title">Who am I?</h2>
+
+    <div class="about-grid">
+      <div class="card">
+        <h3>Education</h3>
+        <p>B.Tech Computer Science<br>Rungta International Skill University, Bhilai</p>
+      </div>
+      <div class="card">
+        <h3>Background</h3>
+        <p>Based in Chhattisgarh<br>Originally from Bihar</p>
+      </div>
+      <div class="card">
+        <h3>Interests</h3>
+        <p>Frontend design, C programming, tech exploration and casual gaming</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <span class="tag">Skills</span>
+    <h2 class="title">Technical Skills</h2>
+
+    <div class="skills-grid">
+      <div class="card">
+        <h3>Frontend</h3>
+        <ul>
+          <li>HTML5 & semantic markup</li>
+          <li>CSS3 & responsive layouts</li>
+          <li>JavaScript basics</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Programming</h3>
+        <ul>
+          <li>C language fundamentals</li>
+          <li>Logic building</li>
+          <li>Git & GitHub</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Core CS</h3>
+        <ul>
+          <li>Data structures (intro)</li>
+          <li>OOP basics</li>
+          <li>Digital logic</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <span class="tag">Projects</span>
+    <h2 class="title">My Work</h2>
+
+    <div class="proj-grid">
+      <div class="card">
+        <h3>Portfolio Website</h3>
+        <p>Personal responsive portfolio built using pure HTML, CSS and JavaScript.</p>
+      </div>
+      <div class="card">
+        <h3>JavaScript Calculator</h3>
+        <p>Simple calculator using DOM manipulation and event handling.</p>
+      </div>
+      <div class="card">
+        <h3>C Pattern Programs</h3>
+        <p>Collection of pattern-based programs to strengthen loop logic.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <span class="tag">Contact</span>
+    <h2 class="title">Connect With Me</h2>
+
+    <form id="contactForm">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button class="btn btn-primary">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> Bittu Kumar · Portfolio
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  document.getElementById("contactForm").addEventListener("submit", e => {
+    e.preventDefault();
+    alert("Message sent successfully!");
+  });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
